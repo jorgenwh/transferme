@@ -27,11 +27,13 @@ while True:
     if not data:
         break
     fp.write(data)
+    print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]", end="\r")
+print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]")
 fp.close()
 t1 = time.time()
 print(f"File {filename} received successfully")
 print(f"File size: {nbytes / 1e9:.3f} GB")
 print(f"Time taken: {t1 - t0:.2f} seconds")
-print(f"Average speed: {(nbytes / (t1 - t0)) / 1e9:.3f} GB/s")
+print(f"Average speed: {(nbytes / (t1 - t0)) / 1e6:.3f} MB/s")
 
 s.close()

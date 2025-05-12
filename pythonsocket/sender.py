@@ -3,7 +3,7 @@ import time
 import socket
 
 FILENAME = "data.bin"
-HOST = "127.0.0.1"
+HOST = "192.168.0.120"
 PORT = 5000
 BUFFER_SIZE = 16384
 
@@ -30,11 +30,13 @@ while True:
     if not data:
         break
     s.send(data)
+    print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]", end="\r")
+print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]")
 fp.close()
 t1 = time.time()
 print(f"File {FILENAME} sent successfully")
 print(f"File size: {nbytes / 1e9:.3f} GB")
 print(f"Time taken: {t1 - t0:.2f} seconds")
-print(f"Average speed: {(nbytes / (t1 - t0)) / 1e9:.3f} GB/s")
+print(f"Average speed: {(nbytes / (t1 - t0)) / 1e6:.3f} MB/s")
 
 s.close()
