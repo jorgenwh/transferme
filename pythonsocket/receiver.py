@@ -1,15 +1,15 @@
 import time
 import socket
 
-TARGET_IP = "127.0.01"
+HOST = "127.0.01"
 PORT = 5000
 BUFFER_SIZE = 16384
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.bind((TARGET_IP, PORT))
+s.bind((HOST, PORT))
 s.listen(1)
-print(f"Listening on {TARGET_IP}:{PORT}")
+print(f"Listening on {HOST}:{PORT}")
 
 conn, addr = s.accept()
 print(f"Connected by {addr}")
@@ -27,8 +27,8 @@ while True:
     if not data:
         break
     fp.write(data)
-    print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]", end="\r")
-print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]")
+    print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1f} MB/s]", end="\r")
+print(f"Received {nbytes / 1e9:.2f} GB [{(nbytes / (time.time() - t0)) / 1e6:.1f} MB/s]")
 fp.close()
 t1 = time.time()
 print(f"File {filename} received successfully")
