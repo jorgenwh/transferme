@@ -27,7 +27,7 @@ while True:
     if not data:
         break
     fp.write(data)
-    print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1f} MB/s]", end="\r")
+    print(f"Received {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1f} MB/s]   ", end="\r")
 print(f"Received {nbytes / 1e9:.2f} GB [{(nbytes / (time.time() - t0)) / 1e6:.1f} MB/s]")
 fp.close()
 t1 = time.time()

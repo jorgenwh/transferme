@@ -30,8 +30,8 @@ while True:
     if not data:
         break
     s.send(data)
-    print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]", end="\r")
-print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1} MB/s]")
+    print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1f} MB/s]   ", end="\r")
+print(f"Sent {nbytes / 1e9:.2f} GB [{nbytes / (time.time() - t0) / 1e6:.1f} MB/s]")
 fp.close()
 t1 = time.time()
 print(f"File {FILENAME} sent successfully")
